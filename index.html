@@ -435,11 +435,12 @@
                 Please fill in all required fields before submitting.
             </div>
 
-            <form id="feedbackForm" action="https://api.web3forms.com/submit" method="POST" target="_blank">
+            <form id="feedbackForm" action="https://api.web3forms.com/submit" method="POST">
                 <!-- Web3Forms Access Key -->
                 <input type="hidden" name="access_key" value="b73d9f0c-e12b-4556-8cc3-579f5de1baf2">
                 <input type="hidden" name="subject" value="Journal Genie Feedback - v1.2.0">
-                <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                <input type="hidden" name="redirect" value="https://journalgenieapp-rgb.github.io/journal-genie-feedback/?success=true">
+                
                 
                 <div class="form-group">
                     <label for="name">Name <span class="required">*</span></label>
@@ -562,6 +563,17 @@
     </footer>
 
     <script>
+        // Check for success parameter in URL (when Web3Forms redirects back)
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('success') === 'true') {
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                // Clear the URL parameter
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+
         document.getElementById('feedbackForm').addEventListener('submit', function(e) {
             const errorMessage = document.getElementById('errorMessage');
             
@@ -588,14 +600,6 @@
                 errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return;
             }
-            
-            // Show success message after a delay (user will see this when they come back to the tab)
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'block';
-                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth', block: 'center' });
-                // Reset the form
-                document.getElementById('feedbackForm').reset();
-            }, 1000);
         });
 
         // Clear error styling on input
