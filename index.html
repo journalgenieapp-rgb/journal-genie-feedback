@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6b70d6 0%, #764ba2 100%);
             color: #2d3748;
             min-height: 100vh;
             line-height: 1.6;
@@ -49,6 +49,20 @@
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
+        /* Icon styles with correct purple */
+        .icon-sparkle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #6b70d6 0%, #8e7fda 100%);
+            border-radius: 8px;
+            font-size: 24px;
+            box-shadow: 0 2px 8px rgba(107, 112, 214, 0.3);
+            margin-right: 8px;
+        }
+
         /* Header */
         .header {
             padding: 1rem 0;
@@ -73,7 +87,9 @@
             font-weight: bold;
             color: white;
             text-decoration: none;
-            text-shadow: 0 0 3px rgba(90, 103, 216, 0.8), 0 0 6px rgba(90, 103, 216, 0.6), 0 0 12px rgba(90, 103, 216, 0.4);
+            display: flex;
+            align-items: center;
+            text-shadow: 0 0 3px rgba(107, 112, 214, 0.8), 0 0 6px rgba(107, 112, 214, 0.6);
         }
 
         .nav-links {
@@ -89,31 +105,34 @@
             transition: all 0.3s ease;
             padding: 0.5rem 1rem;
             border-radius: 20px;
-            text-shadow: 0 0 3px rgba(90, 103, 216, 0.8), 0 0 6px rgba(90, 103, 216, 0.6), 0 0 12px rgba(90, 103, 216, 0.4);
+            text-shadow: 0 0 3px rgba(107, 112, 214, 0.8);
         }
 
         .nav-links a:hover {
             color: white;
-            background: rgba(90, 103, 216, 0.2);
+            background: rgba(107, 112, 214, 0.2);
             transform: translateY(-2px);
         }
 
-        .install-btn {
-            background: #5a67d8;
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
+        .browser-install-icons {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .browser-install-icons img {
+            display: block;
+            transition: transform 0.3s ease;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
         }
 
-        .install-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(90, 103, 216, 0.4);
+        .browser-install-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Special hover effect for Buy Me a Coffee */
+        .browser-install-icons a[title="Support Journal Genie"] img:hover {
+            transform: scale(1.1) rotate(15deg);
         }
 
         /* Main Content */
@@ -181,8 +200,8 @@
         .form-group select:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #6b70d6;
+            box-shadow: 0 0 0 3px rgba(107, 112, 214, 0.1);
         }
 
         .form-group textarea {
@@ -219,9 +238,9 @@
         }
 
         .rating-option input[type="radio"]:checked + label {
-            background: #667eea;
+            background: #6b70d6;
             color: white;
-            border-color: #667eea;
+            border-color: #6b70d6;
         }
 
         .checkbox-group {
@@ -237,7 +256,7 @@
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #6b70d6 0%, #764ba2 100%);
             color: white;
             border: none;
             padding: 15px 40px;
@@ -246,13 +265,13 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 5px 15px rgba(107, 112, 214, 0.3);
             width: 100%;
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(107, 112, 214, 0.4);
         }
 
         .submit-btn:disabled {
@@ -285,7 +304,7 @@
 
         /* Quick Links */
         .quick-links {
-            background: linear-gradient(135deg, #5a67d8 0%, #4c63d2 100%);
+            background: linear-gradient(135deg, #6b70d6 0%, #5a60c8 100%);
             border-radius: 15px;
             padding: 2rem;
             margin-bottom: 3rem;
@@ -325,27 +344,28 @@
 
         /* Footer */
         .footer {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+            background: #2d3748;
+            color: white;
             padding: 2rem;
             text-align: center;
-            color: white;
-            margin-top: 4rem;
         }
 
-        .footer p {
-            opacity: 0.9;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
         }
 
-        .footer a {
+        .footer-links a {
             color: #a5b4fc;
             text-decoration: none;
-            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
-        .footer a:hover {
+        .footer-links a:hover {
             color: white;
-            text-decoration: underline;
         }
 
         /* Mobile Responsive */
@@ -357,6 +377,8 @@
 
             .nav-links {
                 gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             .page-header h1 {
@@ -392,12 +414,31 @@
     <!-- Header -->
     <header class="header">
         <nav class="nav">
-            <a href="https://journalgenie.neocities.org/index.html" class="logo">✨ Journal Genie</a>
+            <a href="https://journalgenie.neocities.org/index.html" class="logo">
+                <span class="icon-sparkle">✨</span>
+                Journal Genie
+            </a>
             <div class="nav-links">
                 <a href="https://journalgenie.neocities.org/index.html">Home</a>
                 <a href="https://journalgenie.neocities.org/journal_genie_faq.html">FAQ</a>
                 <a href="https://journalgenie.neocities.org/updates.html">Updates</a>
-                <a href="https://chromewebstore.google.com/detail/mbcjaikkenhbhbkohibhhkolhalkdken" class="install-btn" target="_blank">Install Extension</a>
+                <div class="browser-install-icons">
+                    <a href="https://chromewebstore.google.com/detail/mbcjaikkenhbhbkohibhhkolhalkdken" 
+                       target="_blank" 
+                       title="Install for Chrome">
+                        <img src="https://journalgenie.neocities.org/chrome.png" alt="Chrome" width="32" height="32">
+                    </a>
+                    <a href="https://addons.mozilla.org/en-US/addon/journal-genie/" 
+                       target="_blank" 
+                       title="Install for Firefox">
+                        <img src="https://journalgenie.neocities.org/firefox.png" alt="Firefox" width="32" height="32">
+                    </a>
+                    <a href="https://buymeacoffee.com/brooklyn2181" 
+                       target="_blank" 
+                       title="Support Journal Genie">
+                        <img src="https://journalgenie.neocities.org/bmac-32.png" alt="Buy Me a Coffee" height="32">
+                    </a>
+                </div>
             </div>
         </nav>
     </header>
@@ -417,8 +458,14 @@
                 <a href="https://journalgenie.neocities.org/updates.html" class="quick-link">
                     See What's New
                 </a>
+                <a href="https://journalgenie.neocities.org/about.html" class="quick-link">
+                    About Journal Genie
+                </a>
                 <a href="https://chromewebstore.google.com/detail/mbcjaikkenhbhbkohibhhkolhalkdken" class="quick-link" target="_blank">
                     Chrome Web Store
+                </a>
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/journal-genie/" class="quick-link" target="_blank">
+                    Firefox Add-ons
                 </a>
                 <a href="https://journalgenie.neocities.org/index.html" class="quick-link">
                     Back to Home
@@ -438,7 +485,7 @@
             <form id="feedbackForm" action="https://api.web3forms.com/submit" method="POST">
                 <!-- Web3Forms Access Key -->
                 <input type="hidden" name="access_key" value="b73d9f0c-e12b-4556-8cc3-579f5de1baf2">
-                <input type="hidden" name="subject" value="Journal Genie Feedback - v1.2.0">
+                <input type="hidden" name="subject" value="Journal Genie Feedback - v1.3.0">
                 <input type="hidden" name="redirect" value="https://journalgenieapp-rgb.github.io/journal-genie-feedback/?success=true">
                 
                 
@@ -550,15 +597,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Journal Genie. Made with ❤️ for the journal community.</p>
-            <p>
-                <a href="https://journalgenie.neocities.org/index.html">Home</a> | 
-                <a href="https://journalgenie.neocities.org/journal_genie_faq.html">FAQ</a> | 
-                <a href="https://journalgenie.neocities.org/updates.html">Updates</a> |
-                <a href="https://journalgenie.neocities.org/journal_genie_privacy_webpage" target="_blank">Privacy Policy</a> | 
-                <a href="mailto:journalgenieapp@gmail.com">Contact</a> | 
+            <div class="footer-links">
+                <a href="https://journalgenie.neocities.org/index.html">Home</a>
+                <a href="https://journalgenie.neocities.org/about.html">About</a>
+                <a href="https://journalgenie.neocities.org/journal_genie_privacy_webpage" target="_blank">Privacy Policy</a>
+                <a href="https://journalgenieapp-rgb.github.io/journal-genie-feedback/">Contact</a>
                 <a href="https://chromewebstore.google.com/detail/mbcjaikkenhbhbkohibhhkolhalkdken" target="_blank">Chrome Web Store</a>
-            </p>
+                <a href="https://addons.mozilla.org/en-US/firefox/addon/journal-genie/" target="_blank">Firefox Add-ons</a>
+                <a href="https://journalgenie.neocities.org/updates.html">Updates</a>
+            </div>
+            <p>&copy; 2025 Journal Genie. Made with ❤️ for the journal rp community.</p>
         </div>
     </footer>
 
